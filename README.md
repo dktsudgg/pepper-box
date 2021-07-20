@@ -16,6 +16,9 @@ Pepper-Box includes four main components
 * **Pepper-Box Serialized Config** : This jmeter config element generates serialized object messages based on input class and its property configurations.
 * **PepperBoxLoadGenerator** : This is standalone utility which can be used without jmeter.
 
+## Useful Ref
+https://www.blazemeter.com/blog/apache-kafka-how-to-load-test-with-jmeter
+
 ### Setup
 ___
 
@@ -34,9 +37,17 @@ su -c "yum install java-1.8.0-openjdk-devel"
 ``` 
 For windows you can download oracle JDK 8 setup from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
+<U>**IF YOU ARE IN WINDOWS OS, YOU SHOULD CHECK THIS ISSUE FOR JDK SETTINGS !!!!!**</U>
+
+<U>**YOU HAVE TO SET JAVA_HOME, JM_LAUNCH env !!!!!**</U>
+
+**https://github.com/GSLabDev/pepper-box/issues/48**
+
+<U>**AND YOU HAVE TO USE jmeter.bat FILE. not ApacheJmeter.jar !!!!!**</U>
+
 #### Build Project
 ```
-mvn clean install -Djmeter.version=3.0 -Dkafka.version=0.9.0.1
+mvn clean install -Djmeter.version=5.4.1 -Dkafka.version=2.8.0
 ```
 JMeter and Kafka version can be passed dynamically.
 
