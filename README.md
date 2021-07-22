@@ -6,6 +6,11 @@ ___
 
 Pepper-Box is kafka load generator plugin for jmeter. It allows to send kafka messages of type plain text(JSON, XML, CSV or any other custom format) as well as java serialized objects.
 
+## Download dktsudgg's custom jar
+```
+wget https://raw.githubusercontent.com/dktsudgg/pepper-box/dktsudgg-custom-benchmark/target/pepper-box-<version>.jar
+```
+
 ## Getting Started
 ___
 
