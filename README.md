@@ -8,6 +8,7 @@ Pepper-Box is kafka load generator plugin for jmeter. It allows to send kafka me
 
 ## Download dktsudgg's custom jar
 ```
+# you have to specify "<version>" field.
 wget https://raw.githubusercontent.com/dktsudgg/pepper-box/dktsudgg-custom-benchmark/target/pepper-box-<version>.jar
 ```
 
