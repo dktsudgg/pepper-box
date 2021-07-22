@@ -1,5 +1,6 @@
 
 .idea
-target
+target/*
+!target/pepper-box-*.jar
 dependency-reduced-pom.xml
 pepper-box.iml
