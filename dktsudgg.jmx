@@ -18,10 +18,10 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">64</stringProp>
+        <stringProp name="ThreadGroup.num_threads">8</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">25</stringProp>
+        <stringProp name="ThreadGroup.duration">5</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
@@ -51,7 +51,7 @@
               </elementProp>
               <elementProp name="value.serializer" elementType="Argument">
                 <stringProp name="Argument.name">value.serializer</stringProp>
-                <stringProp name="Argument.value">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+                <stringProp name="Argument.value">com.gslab.pepper.input.serialized.ObjectToJsonStringSerializer</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="compression.type" elementType="Argument">
@@ -179,7 +179,18 @@
           <stringProp name="classname">com.gslab.pepper.sampler.PepperBoxKafkaSampler</stringProp>
         </JavaSampler>
         <hashTree/>
-        <com.gslab.pepper.config.plaintext.PlainTextConfigElement guiclass="TestBeanGUI" testclass="com.gslab.pepper.config.plaintext.PlainTextConfigElement" testname="Kafka PlainText Load Generator Config" enabled="true">
+        <com.gslab.pepper.config.plaintext.PlainTextConfigElement guiclass="TestBeanGUI" testclass="com.gslab.pepper.config.plaintext.PlainTextConfigElement" testname="Kafka PlainText Load Generator Config" enabled="false">
+          <stringProp name="jsonSchema">{
+	&quot;checkpointId&quot;:{{SEQUENCE_INT(&quot;messageId&quot;, 1, 1)}},
+	&quot;rawData&quot;:{{RANDOM_DOUBLE(1.1, 2.1, 3.1, 4.1)}},
+	&quot;data&quot;:&quot;{{RANDOM_ALPHA_NUMERIC(&quot;abcedefghijklmnopqrwxyzABCDEFGHIJKLMNOPQRWXYZ&quot;, 50)}}&quot;,
+	&quot;alarmCount&quot;:0,
+	&quot;time&quot;:{{TIMESTAMP()}}
+}</stringProp>
+          <stringProp name="placeHolder">MESSAGE</stringProp>
+        </com.gslab.pepper.config.plaintext.PlainTextConfigElement>
+        <hashTree/>
+        <com.gslab.pepper.config.plaintext.PlainTextConfigElement guiclass="TestBeanGUI" testclass="com.gslab.pepper.config.plaintext.PlainTextConfigElement" testname="Kafka PlainText Load Generator Config" enabled="false">
           <stringProp name="jsonSchema">{
 	&quot;messageId&quot;:{{SEQUENCE(&quot;messageId&quot;, 1, 1)}},
 	&quot;messageBody&quot;:&quot;{{RANDOM_ALPHA_NUMERIC(&quot;abcedefghijklmnopqrwxyzABCDEFGHIJKLMNOPQRWXYZ&quot;, 100)}}&quot;,
@@ -211,6 +222,33 @@
             </elementProp>
             <elementProp name="" elementType="com.gslab.pepper.model.FieldExpressionMapping">
               <stringProp name="fieldName">messageTime</stringProp>
+              <stringProp name="fieldExpression">TIMESTAMP()</stringProp>
+            </elementProp>
+          </collectionProp>
+          <stringProp name="placeHolder">MESSAGE</stringProp>
+        </com.gslab.pepper.config.serialized.SerializedConfigElement>
+        <hashTree/>
+        <com.gslab.pepper.config.serialized.SerializedConfigElement guiclass="TestBeanGUI" testclass="com.gslab.pepper.config.serialized.SerializedConfigElement" testname="Kafka Serialized Load Generator Config" enabled="true">
+          <stringProp name="className">com.gslab.pepper.CheckValue</stringProp>
+          <collectionProp name="objProperties">
+            <elementProp name="" elementType="com.gslab.pepper.model.FieldExpressionMapping">
+              <stringProp name="fieldName">checkpointId</stringProp>
+              <stringProp name="fieldExpression">SEQUENCE_INT(&quot;checkpointId&quot;,1,1)</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.gslab.pepper.model.FieldExpressionMapping">
+              <stringProp name="fieldName">rawData</stringProp>
+              <stringProp name="fieldExpression">RANDOM_DOUBLE(1.1, 2.1, 3.1, 4.1)</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.gslab.pepper.model.FieldExpressionMapping">
+              <stringProp name="fieldName">data</stringProp>
+              <stringProp name="fieldExpression">RANDOM_ALPHA_NUMERIC(&quot;abcedefghijklmnopqrwxyzABCDEFGHIJKLMNOPQRWXYZ&quot;, 50)</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.gslab.pepper.model.FieldExpressionMapping">
+              <stringProp name="fieldName">alarmCount</stringProp>
+              <stringProp name="fieldExpression">0</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.gslab.pepper.model.FieldExpressionMapping">
+              <stringProp name="fieldName">time</stringProp>
               <stringProp name="fieldExpression">TIMESTAMP()</stringProp>
             </elementProp>
           </collectionProp>
