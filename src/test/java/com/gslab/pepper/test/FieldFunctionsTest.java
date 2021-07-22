@@ -1,5 +1,6 @@
 package com.gslab.pepper.test;
 
+import com.gslab.pepper.input.CustomFunctions;
 import com.gslab.pepper.input.FieldDataFunctions;
 import org.junit.Test;
 
@@ -55,7 +56,7 @@ public class FieldFunctionsTest {
     }
 
     @Test
-    public void verifyUtilFunctions(){
+    public void verifyUtilFunctions() {
         assertNotNull("Invalid UUID value", FieldDataFunctions.UUID());
         assertNotNull("Invalid IP4 Address", FieldDataFunctions.IPV4());
         assertNotNull("Invalid IPV6 Address", FieldDataFunctions.IPV6());
@@ -63,4 +64,10 @@ public class FieldFunctionsTest {
         assertTrue("Invalid boolean value", currentBoolean == true || currentBoolean == false);
         assertEquals("Invalid sequence", FieldDataFunctions.SEQUENCE("randomSeq", 1, 1), 1);
     }
+
+    @Test
+    public void verifyCustomFunctions() {
+        assertEquals("Invalid sequence", CustomFunctions.SEQUENCE_INT("randomintSeq", 1, 1), 1);
+    }
+
 }

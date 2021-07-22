@@ -1,5 +1,9 @@
 package com.gslab.pepper.input;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * The CustomFunctions allows users to write custom functions and then it can be used in template.
  *
@@ -8,5 +12,11 @@ package com.gslab.pepper.input;
  * @since 01/03/2017
  */
 public class CustomFunctions {
+
+    private static Map<String, AtomicInteger> sequenceMap = new ConcurrentHashMap<>();
+
+    public static int SEQUENCE_INT(String sequenceId, int startValue, int incrementBy) {
+        return sequenceMap.computeIfAbsent(sequenceId, k -> new AtomicInteger(startValue)).getAndAdd(incrementBy);
+    }
 
 }
