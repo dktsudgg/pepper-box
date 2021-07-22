@@ -49,7 +49,7 @@ For windows you can download oracle JDK 8 setup from [here](http://www.oracle.co
 
 **https://github.com/GSLabDev/pepper-box/issues/48**
 
-<U>**AND YOU HAVE TO USE jmeter.bat FILE. not ApacheJmeter.jar !!!!!**</U>
+<U>**AND YOU HAVE TO USE jmeter.bat FILE IN CMD. not ApacheJmeter.jar, and not PowerShell !!!!!**</U>
 
 #### Build Project
 ```
@@ -218,6 +218,17 @@ public class Message  implements Serializable{
 
 **Please make sure that function return type and field data type should be compatible with each other.**
 
+### + cf) guide for Pepper-Box Serialized Config using user-custom class
+
+**IF YOU MADE YOUR CUSTOM MESSAGE CLASS FOR USE,**
+
+**YOU HAVE TO EDIT ```Java Request - value.serializer``` PROPERLY.**
+
+**FOR EXAMPLE, I MADE ```ObjectToJsonStringSerializer``` IN ```package com.gslab.pepper.input.serialized``` TO USE ON MY BENCHMARK.**
+
+**AND I SET MY ```Java Request - value.serializer``` TO ```com.gslab.pepper.input.serialized.ObjectToJsonStringSerializer``` WHEN I USE ```Pepper-Box Serialized Config```**
+
+---
 ### PepperBoxLoadGenerator
 
 PepperBoxLoadGenerator is console plaintext load generation utility.
