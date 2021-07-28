@@ -36,7 +36,7 @@
               </elementProp>
               <elementProp name="zookeeper.servers" elementType="Argument">
                 <stringProp name="Argument.name">zookeeper.servers</stringProp>
-                <stringProp name="Argument.value">DobbyStudy-1:2181,DobbyStudy-2:2181,DobbyStudy-3:2181</stringProp>
+                <stringProp name="Argument.value">DobbyStudy-1:2181,DobbyStudy-2:2181,DobbyStudy-3:2181/dobby-kafka</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="kafka.topic.name" elementType="Argument">
